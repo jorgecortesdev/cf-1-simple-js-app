@@ -15,3 +15,15 @@ let pokemonList = [
     types: ['normal'],
   },
 ];
+
+for (let i = 0; i < pokemonList.length; i++) {
+  let pokemon = pokemonList[i];
+
+  document.write(`${pokemon.name} (height: ${pokemon.height})`);
+
+  if (pokemon.height > 5) {
+    document.write(' - Wow, that\'s big!');
+  }
+
+  document.write('<br>');
+}
