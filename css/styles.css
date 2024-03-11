@@ -33,3 +33,19 @@ body {
   cursor: pointer;
   width: 100%;
 }
+
+.alert {
+  display: none;
+  background-color: gray;
+  padding: 8px 16px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-radius: 0px 0px 5px 5px;
+  font-size: .9rem;
+}
+
+.alert.alert--info {
+  background-color: lightsteelblue;
+}
