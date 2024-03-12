@@ -38,7 +38,9 @@ The branches follow a naming convention such as `Task-1.1`, `Task-1.2`, etc., co
 
 ## Screenshots
 
-[Include screenshots of the project here]
+![Homepage](/assets/1-homepage.png)
+![Details](/assets/2-details.png)
+![Search](/assets/3-search.png)
 
 ## Contributing
 
