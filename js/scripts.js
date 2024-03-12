@@ -102,7 +102,7 @@ const pokemonRepository = (function () {
     cardElement.appendChild(cardBody);
 
     let listItem = document.createElement('div');
-    listItem.classList.add('col-3');
+    listItem.classList.add('col', 'col-sm-6', 'col-md-4', 'col-lg-3');
     listItem.appendChild(cardElement);
 
     let list = document.querySelector('.pokemon-list');
