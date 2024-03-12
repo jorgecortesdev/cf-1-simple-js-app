@@ -45,7 +45,3 @@ The branches follow a naming convention such as `Task-1.1`, `Task-1.2`, etc., co
 ## Contributing
 
 Contributions are welcome! Feel free to fork the repository and submit pull requests for any enhancements or bug fixes.
-
----
-
-Feel free to customize this README file further to fit your project's specific details and requirements.
