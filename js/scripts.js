@@ -24,9 +24,12 @@ const pokemonRepository = (function () {
       return response.json();
     }).then(function (json) {
       json.results.forEach(function (item) {
+        const id = item.url.match(/.*\/(\d+)\/$/)[1];
         let pokemon = {
+          id: `#${id.padStart(4, '0')}`,
           name: item.name,
           detailsUrl: item.url,
+          cover: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
         };
         add(pokemon);
         hideLoadingMessage();
@@ -60,17 +63,47 @@ const pokemonRepository = (function () {
   }
 
   function addListItem(pokemon) {
-    let listItem = document.createElement('li');
-    listItem.classList.add('list-group-item');
+    let coverElement = document.createElement('img');
+    coverElement.classList.add('card-img-top', 'bg-secondary', 'p-5');
+    coverElement.src = pokemon.cover;
 
-    let button = document.createElement('button');
-    button.innerText = pokemon.name;
-    button.classList.add('btn', 'btn-primary');
-    button.setAttribute('data-toggle', 'modal');
-    button.setAttribute('data-target', '#exampleModal');
-    addEventListener(button, pokemon);
+    let cardBody = document.createElement('div');
+    cardBody.classList.add('card-body');
 
-    listItem.appendChild(button);
+    let nameElement = document.createElement('h2');
+    nameElement.innerHTML = pokemon.name;
+
+    let idText = document.createElement('small');
+    idText.classList.add('text-muted');
+    idText.innerText = pokemon.id;
+
+    let cardTextElement = document.createElement('p');
+    cardTextElement.classList.add('card-text');
+    cardTextElement.appendChild(idText);
+
+    let detailsButton = document.createElement('button');
+    detailsButton.classList.add('btn', 'btn-block', 'btn-primary', 'stretched-link');
+    detailsButton.setAttribute('data-toggle', 'modal');
+    detailsButton.setAttribute('data-target', '#exampleModal');
+    detailsButton.innerText = 'Details';
+    addEventListener(detailsButton, pokemon);
+
+    let footerElement = document.createElement('p');
+    footerElement.classList.add('card-text', 'text-center');
+    footerElement.appendChild(detailsButton);
+
+    cardBody.appendChild(nameElement);
+    cardBody.appendChild(cardTextElement);
+    cardBody.appendChild(footerElement);
+
+    let cardElement = document.createElement('div');
+    cardElement.classList.add('card', 'mb-4');
+    cardElement.appendChild(coverElement);
+    cardElement.appendChild(cardBody);
+
+    let listItem = document.createElement('div');
+    listItem.classList.add('col-3');
+    listItem.appendChild(cardElement);
 
     let list = document.querySelector('.pokemon-list');
     list.appendChild(listItem);

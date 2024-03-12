@@ -1,0 +1,1 @@
+body{font-family:Roboto,sans-serif;font-weight:400;font-style:normal;padding-top:5rem}.alert{display:none;background-color:gray;padding:8px 16px;position:absolute;top:0;left:50%;transform:translate(-50%,0);border-radius:0 0 5px 5px;font-size:.9rem;z-index:1031}.alert.alert--info{background-color:#b0c4de}
