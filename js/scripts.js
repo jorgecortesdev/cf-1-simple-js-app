@@ -83,8 +83,8 @@ const pokemonRepository = (function () {
 
     let detailsButton = document.createElement('button');
     detailsButton.classList.add('btn', 'btn-block', 'btn-primary', 'stretched-link');
-    detailsButton.setAttribute('data-toggle', 'modal');
-    detailsButton.setAttribute('data-target', '#exampleModal');
+    detailsButton.setAttribute('data-bs-toggle', 'modal');
+    detailsButton.setAttribute('data-bs-target', '#exampleModal');
     detailsButton.innerText = 'Details';
     addEventListener(detailsButton, pokemon);
 
@@ -102,7 +102,7 @@ const pokemonRepository = (function () {
     cardElement.appendChild(cardBody);
 
     let listItem = document.createElement('div');
-    listItem.classList.add('col', 'col-sm-6', 'col-md-4', 'col-lg-3');
+    listItem.classList.add('col-xs-12', 'col-sm-6', 'col-lg-4', 'col-xl-3');
     listItem.appendChild(cardElement);
 
     let list = document.querySelector('.pokemon-list');
@@ -179,4 +179,4 @@ document.querySelector('#search').addEventListener('input', (e) => {
   pokemonRepository.search(e.target.value).forEach(pokemon => {
     pokemonRepository.addListItem(pokemon);
   });
-})
+});
