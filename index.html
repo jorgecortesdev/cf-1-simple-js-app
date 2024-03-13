@@ -17,11 +17,10 @@
   <link rel="stylesheet" href="dist/styles.min.css">
 </head>
 <body>
-  <div class="alert alert--info">
-    Loading...
-  </div>
-
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <div class="alert alert--info">
+      Loading...
+    </div>
     <div class="container-fluid">
       <a class="navbar-brand" href="/">Pokédex</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -46,7 +45,7 @@
   </nav>
 
   <main role="main" class="container">
-    <div class="bg-body-tertiary p-4 p-md-5 py-lg-4 px-lg-5 mb-4 rounded">
+    <div class="mb-4">
       <h1>Pokédex</h1>
       <p class="lead mb-4">
         Click on a Pokémon to display more information. Can't find the Pokémon
@@ -55,6 +54,14 @@
 
       <div class="pokemon-list row"></div>
     </div>
+
+    <nav class="mb-5">
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <button type="button" class="btn btn-lg btn-primary" id="load-more">Load more Pokémon</button>
+        </li>
+      </ul>
+    </nav>
   </main>
 
   <!-- Modal -->

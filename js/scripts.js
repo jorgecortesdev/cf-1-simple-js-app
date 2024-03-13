@@ -1,6 +1,8 @@
 const pokemonRepository = (function () {
   let pokemonList = [];
-  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+  let limit = 12;
+  let apiUrl = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}`;
+
 
   function getAll() {
     return pokemonList;
@@ -19,10 +21,12 @@ const pokemonRepository = (function () {
   }
 
   function loadList() {
-    showLoadingMessage();
+    _showLoadingMessage();
+
     return fetch(apiUrl).then(function (response) {
       return response.json();
     }).then(function (json) {
+      apiUrl = json.next;
       json.results.forEach(function (item) {
         const id = item.url.match(/.*\/(\d+)\/$/)[1];
         let pokemon = {
@@ -32,16 +36,16 @@ const pokemonRepository = (function () {
           cover: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
         };
         add(pokemon);
-        hideLoadingMessage();
+        _hideLoadingMessage();
       });
     }).catch(function (e) {
       console.error(e);
-      hideLoadingMessage();
+      _hideLoadingMessage();
     });
   }
 
   function loadDetails(item) {
-    showLoadingMessage();
+    _showLoadingMessage();
     let url = item.detailsUrl;
     return fetch(url).then(function (response) {
       return response.json();
@@ -49,14 +53,14 @@ const pokemonRepository = (function () {
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
       item.types = details.types;
-      hideLoadingMessage();
+      _hideLoadingMessage();
     }).catch(function (e) {
       console.error(e);
-      hideLoadingMessage();
+      _hideLoadingMessage();
     });
   }
 
-  function search(query) {
+  function _search(query) {
     return pokemonList.filter(pokemon => {
       return pokemon.name.toLowerCase().includes(query.toLowerCase());
     });
@@ -86,7 +90,7 @@ const pokemonRepository = (function () {
     detailsButton.setAttribute('data-bs-toggle', 'modal');
     detailsButton.setAttribute('data-bs-target', '#exampleModal');
     detailsButton.innerText = 'Details';
-    addEventListener(detailsButton, pokemon);
+    _addEventListener(detailsButton, pokemon);
 
     let footerElement = document.createElement('p');
     footerElement.classList.add('card-text', 'text-center');
@@ -109,29 +113,29 @@ const pokemonRepository = (function () {
     list.appendChild(listItem);
   }
 
-  function addEventListener(button, pokemon) {
+  function _addEventListener(button, pokemon) {
     button.addEventListener('click', () => {
-      showDetails(pokemon);
+      _showDetails(pokemon);
     });
   }
 
-  function showDetails(pokemon) {
+  function _showDetails(pokemon) {
     loadDetails(pokemon).then(function () {
-      showModal(pokemon);
+      _showModal(pokemon);
     });
   }
 
-  function showLoadingMessage() {
+  function _showLoadingMessage() {
     let alert = document.querySelector('.alert.alert--info');
     alert.style.display = 'block';
   }
 
-  function hideLoadingMessage() {
+  function _hideLoadingMessage() {
     let alert = document.querySelector('.alert.alert--info');
     alert.style.display = 'none';
   }
 
-  function showModal(pokemon) {
+  function _showModal(pokemon) {
     let titleElement = document.querySelector('#exampleModalLabel');
     titleElement.innerText = pokemon.name;
 
@@ -151,32 +155,32 @@ const pokemonRepository = (function () {
     bodyElement.appendChild(typesElement);
   }
 
-  function resetList() {
+  function _resetList() {
     let list = document.querySelector('.pokemon-list');
     list.innerHTML = '';
   }
 
+  document.querySelector('#search').addEventListener('input', (e) => {
+    _resetList();
+    _search(e.target.value).forEach(pokemon => addListItem(pokemon));
+  });
+
+  document.querySelector('#load-more').addEventListener('click', async () => {
+    await loadList();
+    pokemonList.slice(-limit).forEach(pokemon => addListItem(pokemon));
+  });
+
   return {
     getAll: getAll,
     add: add,
-    search: search,
     addListItem: addListItem,
     loadList: loadList,
-    loadDetails: loadDetails,
-    resetList: resetList,
+    loadDetails: loadDetails
   }
 })();
 
 pokemonRepository.loadList().then(() => {
   pokemonRepository.getAll().forEach(pokemon => {
-    pokemonRepository.addListItem(pokemon);
-  });
-});
-
-document.querySelector('#search').addEventListener('input', (e) => {
-  pokemonRepository.resetList();
-
-  pokemonRepository.search(e.target.value).forEach(pokemon => {
     pokemonRepository.addListItem(pokemon);
   });
 });
