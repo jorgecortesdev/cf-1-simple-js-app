@@ -3,7 +3,6 @@ const pokemonRepository = (function () {
   let limit = 12;
   let apiUrl = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}`;
 
-
   function getAll() {
     return pokemonList;
   }
@@ -13,7 +12,7 @@ const pokemonRepository = (function () {
       return;
     }
 
-    if (! ['name', 'detailsUrl'].every(key => Object.keys(pokemon).includes(key))) {
+    if (! ['id', 'name', 'detailsUrl', 'types', 'cover'].every(key => Object.keys(pokemon).includes(key))) {
       return;
     }
 
@@ -24,23 +23,39 @@ const pokemonRepository = (function () {
     _showLoadingMessage();
 
     return fetch(apiUrl).then(function (response) {
-      return response.json();
-    }).then(function (json) {
-      apiUrl = json.next;
-      json.results.forEach(function (item) {
-        const id = item.url.match(/.*\/(\d+)\/$/)[1];
-        let pokemon = {
-          id: `#${id.padStart(4, '0')}`,
-          name: item.name,
-          detailsUrl: item.url,
-          cover: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
-        };
-        add(pokemon);
-        _hideLoadingMessage();
+        return response.json();
+      }).then(function (json) {
+        apiUrl = json.next;
+
+        const results = json.results.map(function (item) {
+          let pokemon = {
+            name: item.name,
+            detailsUrl: item.url,
+          };
+
+          return _pokemonDetails(pokemon);
+        });
+
+        return Promise.all(results).then(() => _hideLoadingMessage());
+      }).catch(function (e) {
+        console.error(e);
+        _hideLoadingMessage()
       });
+  }
+
+  function _pokemonDetails(pokemon) {
+    const id = pokemon.detailsUrl.match(/.*\/(\d+)\/$/)[1];
+
+    return fetch(pokemon.detailsUrl).then(function (response) {
+      return response.json();
+    }).then(function (details) {
+      pokemon.id = `#${id.padStart(4, '0')}`;
+      pokemon.imageUrl = details.sprites.front_default;
+      pokemon.types = details.types.map(({ type }) => type.name);
+      pokemon.cover = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
+      add(pokemon)
     }).catch(function (e) {
       console.error(e);
-      _hideLoadingMessage();
     });
   }
 
@@ -52,7 +67,6 @@ const pokemonRepository = (function () {
     }).then(function (details) {
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
-      item.types = details.types;
       _hideLoadingMessage();
     }).catch(function (e) {
       console.error(e);
@@ -85,8 +99,17 @@ const pokemonRepository = (function () {
     cardTextElement.classList.add('card-text');
     cardTextElement.appendChild(idText);
 
+    let typeTextElement = document.createElement('p');
+    typeTextElement.classList.add('card-text', 'd-flex', 'gap-1');
+    pokemon.types.forEach(function (type) {
+      let typeElement = document.createElement('span');
+      typeElement.classList.add('badge', `type-bg-${type}`);
+      typeElement.innerText = type;
+      typeTextElement.appendChild(typeElement);
+    });
+
     let detailsButton = document.createElement('button');
-    detailsButton.classList.add('btn', 'btn-block', 'btn-primary', 'stretched-link');
+    detailsButton.classList.add('btn', 'btn-block', 'btn-primary', 'stretched-link', 'mt-2');
     detailsButton.setAttribute('data-bs-toggle', 'modal');
     detailsButton.setAttribute('data-bs-target', '#exampleModal');
     detailsButton.innerText = 'Details';
@@ -98,6 +121,7 @@ const pokemonRepository = (function () {
 
     cardBody.appendChild(nameElement);
     cardBody.appendChild(cardTextElement);
+    cardBody.appendChild(typeTextElement);
     cardBody.appendChild(footerElement);
 
     let cardElement = document.createElement('div');
@@ -146,7 +170,7 @@ const pokemonRepository = (function () {
     heightElement.innerText = `Height: ${pokemon.height}`;
 
     let typesElement = document.createElement('p');
-    typesElement.innerText = `Types: ${pokemon.types.map(({type}) => type.name).join(', ')}`;
+    typesElement.innerText = `Types: ${pokemon.types.join(', ')}`;
 
     let bodyElement = document.querySelector('.modal-body');
     bodyElement.innerHTML = '';
@@ -155,13 +179,10 @@ const pokemonRepository = (function () {
     bodyElement.appendChild(typesElement);
   }
 
-  function _resetList() {
+  document.querySelector('#search').addEventListener('input', (e) => {
     let list = document.querySelector('.pokemon-list');
     list.innerHTML = '';
-  }
 
-  document.querySelector('#search').addEventListener('input', (e) => {
-    _resetList();
     _search(e.target.value).forEach(pokemon => addListItem(pokemon));
   });
 
