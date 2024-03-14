@@ -81,57 +81,44 @@ const pokemonRepository = (function () {
   }
 
   function addListItem(pokemon) {
-    let coverElement = document.createElement('img');
-    coverElement.classList.add('card-img-top', 'bg-secondary', 'p-5');
-    coverElement.src = pokemon.cover;
-
-    let cardBody = document.createElement('div');
-    cardBody.classList.add('card-body');
+    let idText = document.createElement('p');
+    idText.classList.add('panel__id');
+    idText.innerText = pokemon.id;
 
     let nameElement = document.createElement('h2');
     nameElement.innerHTML = pokemon.name;
 
-    let idText = document.createElement('small');
-    idText.classList.add('text-muted');
-    idText.innerText = pokemon.id;
-
-    let cardTextElement = document.createElement('p');
-    cardTextElement.classList.add('card-text');
-    cardTextElement.appendChild(idText);
-
-    let typeTextElement = document.createElement('p');
-    typeTextElement.classList.add('card-text', 'd-flex', 'gap-1');
+    let typesElement = document.createElement('div');
+    typesElement.classList.add('panel__types');
     pokemon.types.forEach(function (type) {
-      let typeElement = document.createElement('span');
-      typeElement.classList.add('badge', `type-bg-${type}`);
+      let typeElement = document.createElement('p');
+      typeElement.classList.add('panel__badge');
       typeElement.innerText = type;
-      typeTextElement.appendChild(typeElement);
+      typesElement.appendChild(typeElement);
     });
 
-    let detailsButton = document.createElement('button');
-    detailsButton.classList.add('btn', 'btn-block', 'btn-primary', 'stretched-link', 'mt-2');
+    let coverElement = document.createElement('img');
+    coverElement.classList.add('panel__image');
+    coverElement.src = pokemon.cover;
+
+    let detailsButton = document.createElement('a');
+    detailsButton.classList.add('stretched-link', 'mt-2');
     detailsButton.setAttribute('data-bs-toggle', 'modal');
     detailsButton.setAttribute('data-bs-target', '#exampleModal');
-    detailsButton.innerText = 'Details';
     _addEventListener(detailsButton, pokemon);
 
-    let footerElement = document.createElement('p');
-    footerElement.classList.add('card-text', 'text-center');
-    footerElement.appendChild(detailsButton);
+    let panelElement = document.createElement('div');
+    panelElement.classList.add('panel', `type-bg-${pokemon.types[0]}`);
 
-    cardBody.appendChild(nameElement);
-    cardBody.appendChild(cardTextElement);
-    cardBody.appendChild(typeTextElement);
-    cardBody.appendChild(footerElement);
-
-    let cardElement = document.createElement('div');
-    cardElement.classList.add('card', 'mb-4');
-    cardElement.appendChild(coverElement);
-    cardElement.appendChild(cardBody);
+    panelElement.appendChild(idText);
+    panelElement.appendChild(nameElement);
+    panelElement.appendChild(typesElement);
+    panelElement.appendChild(coverElement);
+    panelElement.appendChild(detailsButton);
 
     let listItem = document.createElement('div');
     listItem.classList.add('col-xs-12', 'col-sm-6', 'col-lg-4', 'col-xl-3');
-    listItem.appendChild(cardElement);
+    listItem.appendChild(panelElement);
 
     let list = document.querySelector('.pokemon-list');
     list.appendChild(listItem);
