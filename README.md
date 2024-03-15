@@ -39,8 +39,10 @@ The branches follow a naming convention such as `Task-1.1`, `Task-1.2`, etc., co
 ## Screenshots
 
 ![Homepage](/assets/1-homepage.png)
-![Details](/assets/2-details.png)
+![Load more](/assets/2-load-button.png)
 ![Search](/assets/3-search.png)
+![Pokemon - About](/assets/4-pokemon-about.png)
+![Pokemon - Stats](/assets/5-pokemon-stats.png)
 
 ## Contributing
 
