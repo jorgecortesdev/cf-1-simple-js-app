@@ -163,3 +163,88 @@ body {
   bottom: 5px;
   right: 5px;
 }
+
+.modal-content {
+  border-radius: 2rem;
+}
+
+.modal-header {
+  border: 0;
+  color: #f8f8f8 !important;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.modal-header > div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.modal-header-title {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.modal-header-title h2 {
+  margin: 0;
+  margin-bottom: 0.3rem;
+}
+
+.modal-header-title ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-direction: row;
+}
+
+ul.panel__types {
+  gap: 6px;
+}
+
+.modal-header img {
+  width: 250px;
+  height: auto;
+  z-index: 1;
+}
+
+.modal-body {
+  border-radius: 2rem;
+  background-color: #fff;
+  padding: 2.2rem;
+  color: #000;
+}
+
+.modal-body dt {
+  float: left;
+  clear: left;
+  width: 80px;
+  text-align: right;
+  font-weight: 500;
+  color: #aaa;
+}
+
+.modal-body .tab-content {
+  padding: 1.8rem 0.1rem;
+}
+
+.modal-body dt::after {
+  content: ":";
+}
+
+.modal-body dd {
+  margin: 0 0 0 110px;
+  padding: 0 0 0.5em 0;
+}
+
+.modal-body .nav-link {
+  color: #888;
+}
+
+.modal-body .progress {
+  border-radius: 0;
+}
