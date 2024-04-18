@@ -19,15 +19,54 @@ To run the project, open the `index.html` file in your preferred web browser.
 - Implementation of ESLint for code linting
 - Minification of CSS and JavaScript files for optimization
 
-## Branches
+## CareerFoundry Students
 
-To view all the stages of the project using different branches, follow these steps:
+If you are a CareerFoundry Student, this project is module #1 of the Full-Stack Immersion course. If you are not too sure about your code and you need a reference, you can use the following links to compare your code with mine.
 
-1. Use the command `git branch` to list all available branches.
-2. Checkout each branch using `git checkout branch-name`.
-3. After checking out each branch, open the project in your code editor to inspect the code changes and view the project at each stage.
+- **1.1: What is JavaScript?:** https://github.com/jorgecortesdev/cf-1-simple-js-app/commit/5c5a15777b18322a93554be0b6071506f27d40c2
+- **1.2: JavaScript Basics Part 1:** https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/1/files
+- **1.3: JavaScript Basics Part 2:** https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/2/files
+- **1.5: JavaScript Functions Part 2:** https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/4/files
+- **1.6: DOM Interaction:** https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/5/files
+- **1.7: APIs, Ajax & Asynchronous Behavior:** https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/6/files
+- **1.8: Creating UI Patterns with JavaScript:** https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/7/files
+- **1.10: Bootstrap & UI Libraries:** https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/8/files
+- **1.11: Performance & Debugging:** https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/9/files
 
-The branches follow a naming convention such as `Task-1.1`, `Task-1.2`, etc., corresponding to different tasks completed throughout the project development. Some tasks may not have corresponding branches if they didn't involve changes to the project's code.
+If you are wondering why there are some missing numbers is because the lesson or the task wasn't directly related with the code and didn't require any modification of the API.
+
+Additionally, if you want to extend your movie API project you might want read the code in the other branches.
+
+- https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/10/files
+- https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/11/files
+- https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/12/files
+- https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/13
+- https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/14
+
+#### Branches
+
+The exercise branches are called `Task-1.x`, where `x` stands for exercise number.
+
+The extra content branches start with a number which is the order and the feature added, ex. `1-bonus-upgrade-bootstrap`.
+
+If you want to clone a particular branch to review the code in your computer, first make sure to be in a different folder of your own project. Then you can do the following (change the branch name if you want a different branch):
+
+```
+git clone https://github.com/jorgecortesdev/cf-1-simple-js-app.git
+cd cf-1-simple-js-app
+git checkout Task-1.2
+```
+
+Or
+
+```
+git clone https://github.com/jorgecortesdev/cf-1-simple-js-app.git --branch Task-1.2
+cd cf-1-simple-js-app
+```
+
+## Not a CareerFoundry Student?
+
+If you’re interested in studying with CareerFoundry, you can use my referral link for a 5% discount on one of the courses: https://careerfoundry.com/en/referral_registrations/new?referral=ArJpwnEw
 
 ## Resources
 
@@ -44,6 +83,10 @@ The branches follow a naming convention such as `Task-1.1`, `Task-1.2`, etc., co
 ![Pokemon - About](/assets/4-pokemon-about.png)
 ![Pokemon - Stats](/assets/5-pokemon-stats.png)
 
-## Contributing
+## Maintainers
 
-Contributions are welcome! Feel free to fork the repository and submit pull requests for any enhancements or bug fixes.
+Currently, the sole maintainer is [@jorgecortesdev](https://github.com/jorgecortesdev) - more maintainers are quite welcome.
+
+## License
+
+See [LICENSE.md](./LICENSE.md).
