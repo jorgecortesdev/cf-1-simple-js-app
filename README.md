@@ -26,7 +26,9 @@ If you are a CareerFoundry Student, this project is module #1 of the Full-Stack 
 - **1.1: What is JavaScript?:** https://github.com/jorgecortesdev/cf-1-simple-js-app/commit/5c5a15777b18322a93554be0b6071506f27d40c2
 - **1.2: JavaScript Basics Part 1:** https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/1/files
 - **1.3: JavaScript Basics Part 2:** https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/2/files
-- **1.5: JavaScript Functions Part 2:** https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/4/files
+- **1.5: JavaScript Functions Part 2:**
+- - https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/3/files
+- - https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/4/files
 - **1.6: DOM Interaction:** https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/5/files
 - **1.7: APIs, Ajax & Asynchronous Behavior:** https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/6/files
 - **1.8: Creating UI Patterns with JavaScript:** https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/7/files
@@ -40,8 +42,8 @@ Additionally, if you want to extend your movie API project you might want read t
 - https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/10/files
 - https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/11/files
 - https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/12/files
-- https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/13
-- https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/14
+- https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/13/files
+- https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/14/files
 
 #### Branches
 
