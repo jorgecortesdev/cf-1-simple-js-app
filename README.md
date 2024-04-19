@@ -27,8 +27,8 @@ If you are a CareerFoundry Student, this project is module #1 of the Full-Stack 
 - **1.2: JavaScript Basics Part 1:** https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/1/files
 - **1.3: JavaScript Basics Part 2:** https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/2/files
 - **1.5: JavaScript Functions Part 2:**
-- - https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/3/files
-- - https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/4/files
+  - https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/3/files
+  - https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/4/files
 - **1.6: DOM Interaction:** https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/5/files
 - **1.7: APIs, Ajax & Asynchronous Behavior:** https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/6/files
 - **1.8: Creating UI Patterns with JavaScript:** https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/7/files
