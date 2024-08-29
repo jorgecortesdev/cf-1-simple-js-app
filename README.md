@@ -6,7 +6,7 @@ This project is a demonstration of building a dynamic web application using HTML
 
 1. Clone the repository to your local machine.
 2. Open the project directory in your preferred code editor.
-3. Install ESLint plugin in your editor and configure it with the provided `.eslintrc` file.
+3. Install the ESLint plugin in your editor and configure it with the provided `.eslintrc` file.
 
 ## Usage
 
@@ -35,9 +35,9 @@ If you are a CareerFoundry Student, this project is module #1 of the Full-Stack 
 - **1.10: Bootstrap & UI Libraries:** https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/8/files
 - **1.11: Performance & Debugging:** https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/9/files
 
-If you are wondering why there are some missing numbers is because the lesson or the task wasn't directly related with the code and didn't require any modification of the API.
+If you are wondering why there are some missing numbers is because the lesson or the task wasn't directly related to the code and didn't require any modification of the app.
 
-Additionally, if you want to extend your movie API project you might want read the code in the other branches.
+Additionally, if you want to extend your project you might want to read the code in the other branches.
 
 - https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/10/files
 - https://github.com/jorgecortesdev/cf-1-simple-js-app/pull/11/files
@@ -47,11 +47,11 @@ Additionally, if you want to extend your movie API project you might want read t
 
 #### Branches
 
-The exercise branches are called `Task-1.x`, where `x` stands for exercise number.
+The exercise branches are called `Task-1.x`, where `x` stands for the exercise number.
 
 The extra content branches start with a number which is the order and the feature added, ex. `1-bonus-upgrade-bootstrap`.
 
-If you want to clone a particular branch to review the code in your computer, first make sure to be in a different folder of your own project. Then you can do the following (change the branch name if you want a different branch):
+If you want to clone a particular branch to review the code on your computer, first make sure you are in a different folder of your project. Then you can do the following (change the branch name if you want a different branch):
 
 ```
 git clone https://github.com/jorgecortesdev/cf-1-simple-js-app.git
